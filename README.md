@@ -1,6 +1,7 @@
 # ntdll-sys
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![Build Status](https://travis-ci.com/Wenzel/ntdll-sys.svg?branch=master)](https://travis-ci.com/Wenzel/ntdll-sys)
 
 > Rust unsafe bindings for ntdll
 

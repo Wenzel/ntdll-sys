@@ -7,11 +7,13 @@ use std::path::PathBuf;
 fn main() {
 
     // what library to link with
-    println!("cargo:rustc-link-lib=ntdll");
+    println!("cargo:rustc-link-lib=dylib=ntdll");
 
     let build_source = Path::new(file!());
-    let project_root = build_source.parent();
-    let include_dir = project_root.join("src/include")
+    let project_root = build_source.parent().unwrap();
+    let include_dir = project_root.join("src/include");
+    let ndk_inc_dir = include_dir.join("ndk");
+    let ddk_inc_dir = include_dir.join("ddk");
 
     // The bindgen::Builder is the main entry point
     // to bindgen, and lets you build up options for
@@ -20,7 +22,10 @@ fn main() {
         // The input header we would like to generate
         // bindings for.
         .header("src/wrapper.h")
-        .clang_arg(format!("-I{}", include_dir))
+        .clang_arg(format!("-I{}", include_dir.to_str().unwrap()))
+        .clang_arg(format!("-I{}", ndk_inc_dir.to_str().unwrap()))
+        .clang_arg(format!("-I{}", ddk_inc_dir.to_str().unwrap()))
+        .whitelist_function("Nt.*")
         // Finish the builder and generate the bindings.
         .generate()
         // Unwrap the Result and panic on failure.

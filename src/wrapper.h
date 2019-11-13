@@ -1,1 +1,2 @@
-#include <foo.h>
+#include <windows.h>
+#include "include/ndk/exfuncs.h"

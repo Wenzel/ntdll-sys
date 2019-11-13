@@ -1,0 +1,16 @@
+[package]
+name = "ntdll-sys"
+version = "0.1.0"
+authors = ["Mathieu Tarral <mathieu.tarral@protonmail.com>"]
+edition = "2018"
+links = "ntdll"
+repository = "https://github.com/Wenzel/ntdll-sys"
+readme = "README.md"
+keywords = ["ntdll"]
+description = "Rust unsafe bindings for ntdll"
+license = "GPL-3.0-only"
+
+[dependencies]
+
+[build-dependencies]
+bindgen = "0.51.1"
